@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VgIDWF5XGwIHVFZQBAE="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),u=c.length,f=i(a,o,r),d=0;u>d;d++)c[d].apply(f,n);return f}function a(t,e){u[t]=s(t).concat(e)}function s(t){return u[t]||[]}function c(){return n(e)}var u={};return{on:a,emit:e,create:c,listeners:s,_events:u}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(u){try{r("ierr",[u,(new Date).getTime(),!0])}catch(f){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(4),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e,NREUM.noticeError=n;try{throw new Error}catch(u){"stack"in u&&(t(5),t(3),"addEventListener"in window&&t(1),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(2),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:4,2:7,3:5,4:18,5:6,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:18,2:19,ee:"QJf3ax",gos:"7eSDFh"}],5:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:19,2:18,ee:"QJf3ax"}],6:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:19,2:18,ee:"QJf3ax"}],7:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),u=s(a),f=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new f(t);try{i.emit("new-xhr",[],e),u.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=f.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:4,2:19,ee:"QJf3ax"}],8:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,u="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,f=e(u);if(f&&(r.rxSize=f),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,u=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var u=e(o);u&&(r.txSize=u)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var f=0;c>f;f++)n.addEventListener(s[f],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+u(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+u(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:9,3:7,4:4,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],9:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&c&&c.body){p.proto="https"===d.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=c.createElement("script");e.src=p.proto+t.agent,c.body.appendChild(e)}}function r(){"complete"===c.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=window,c=s.document,u="addEventListener",f="attachEvent",d=(""+location).split("?")[0],p=e.exports={offset:i(),origin:d,features:{}};c[u]?(c[u]("DOMContentLoaded",o,!1),s[u]("load",n,!1)):(c[f]("onreadystatechange",r),s[f]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}],18:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],19:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,u;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){f([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return u=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,u],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,u(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,u="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,u?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){f([o,e,n,r])}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){f([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function f(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:18,ee:"QJf3ax"}]},{},["G9z0Bl",3,8]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-6.newrelic.com","queueTime":2,"licenseKey":"a83c67553d","agent":"js-agent.newrelic.com/nr-476.min.js","transactionName":"MlZQbUVSXUJTAUVRXAscdExZUEdYXQweVlYSQBxPXlZEQggsVE9AKVpBTWFaVkY=","applicationID":"1707230","errorBeacon":"bam.nr-data.net","applicationTime":128}</script>
+    <title>Arch Linux - News</title>
+    <link rel="stylesheet" type="text/css" href="https://d11xdyzr0div58.cloudfront.net/static/archweb.b2d157090ef1.css" media="screen, projection" />
+    <link rel="icon" type="image/x-icon" href="https://d11xdyzr0div58.cloudfront.net/static/favicon.29302f683ff8.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="https://d11xdyzr0div58.cloudfront.net/static/favicon.29302f683ff8.ico" />
+    <link rel="apple-touch-icon" href="https://d11xdyzr0div58.cloudfront.net/static/logos/apple-touch-icon-57x57.0cd0ab3349e2.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="https://d11xdyzr0div58.cloudfront.net/static/logos/apple-touch-icon-72x72.e502bac6368f.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="https://d11xdyzr0div58.cloudfront.net/static/logos/apple-touch-icon-114x114.343cca8f850e.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="https://d11xdyzr0div58.cloudfront.net/static/logos/apple-touch-icon-144x144.38cf584757c3.png" />
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch/packages/" title="Arch Linux Packages" />
+    
+<link rel="alternate" type="application/rss+xml" title="Arch Linux News Updates" href="/feeds/news/" />
+
+</head>
+<body class="">
+    <div id="archnavbar" class="anb-home">
+        <div id="archnavbarlogo"><h1><a href="/" title="Return to the main page">Arch Linux</a></h1></div>
+        <div id="archnavbarmenu">
+            <ul id="archnavbarlist">
+                <li id="anb-home"><a href="/" title="Arch news, packages, projects and more">Home</a></li>
+                <li id="anb-packages"><a href="/packages/" title="Arch Package Database">Packages</a></li>
+                <li id="anb-forums"><a href="https://bbs.archlinux.org/" title="Community forums">Forums</a></li>
+                <li id="anb-wiki"><a href="https://wiki.archlinux.org/" title="Community documentation">Wiki</a></li>
+                <li id="anb-bugs"><a href="https://bugs.archlinux.org/" title="Report and track bugs">Bugs</a></li>
+                <li id="anb-aur"><a href="https://aur.archlinux.org/" title="Arch Linux User Repository">AUR</a></li>
+                <li id="anb-download"><a href="/download/" title="Get Arch Linux">Download</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="content">
+        <div id="archdev-navbar">
+            
+        </div>
+        
+        
+<div id="news-article-list" class="box">
+
+    <h2>News Archives</h2>
+
+    
+
+    
+<div class="pagination">
+    <p>583 news items, viewing page 1 of 12.</p>
+    <p class="news-nav">
+    
+    
+    
+    <span>1</span>
+    
+    
+    
+    <a href="?page=2" title="Go to page 2">2</a>
+    
+    
+    
+    <a href="?page=3" title="Go to page 3">3</a>
+    
+    
+    
+    <a href="?page=4" title="Go to page 4">4</a>
+    
+    
+    
+    <a href="?page=5" title="Go to page 5">5</a>
+    
+    
+    
+    <a href="?page=6" title="Go to page 6">6</a>
+    
+    
+    
+    <a href="?page=7" title="Go to page 7">7</a>
+    
+    
+    
+    <a href="?page=8" title="Go to page 8">8</a>
+    
+    
+    
+    <a href="?page=9" title="Go to page 9">9</a>
+    
+    
+    
+    <a href="?page=10" title="Go to page 10">10</a>
+    
+    
+    
+    <a href="?page=11" title="Go to page 11">11</a>
+    
+    
+    
+    <a href="?page=12" title="Go to page 12">12</a>
+    
+    
+    
+    <a class="next" href="?page=2"
+        title="Go to next page">Next &gt;</a>
+    
+    </p>
+</div>
+
+
+
+    <table id="article-list" class="results">
+        <thead>
+            <tr>
+                <th>Published</th>
+                <th>Title</th>
+                <th>Author</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr class="odd">
+                <td>2014-10-12</td>
+                <td class="wrap"><a href="/news/java-users-manual-intervention-required-before-upgrade/"
+                        title="View: Java users: manual intervention required before upgrade">Java users: manual intervention required before upgrade</a></td>
+                <td>Guillaume Alaux</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2014-10-05</td>
+                <td class="wrap"><a href="/news/nvidia-340xx-and-nvidia/"
+                        title="View: nvidia-340xx and nvidia">nvidia-340xx and nvidia</a></td>
+                <td>Sven-Hendrik Haase</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2014-10-02</td>
+                <td class="wrap"><a href="/news/mesa-updated-to-1030/"
+                        title="View: mesa updated to 10.3.0">mesa updated to 10.3.0</a></td>
+                <td>Laurent Carlier</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2014-09-26</td>
+                <td class="wrap"><a href="/news/mailinglists-maintenance/"
+                        title="View: Mailinglists maintenance">Mailinglists maintenance</a></td>
+                <td>Florian Pritz</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2014-08-21</td>
+                <td class="wrap"><a href="/news/reorganization-of-vim-packages/"
+                        title="View: Reorganization of Vim packages">Reorganization of Vim packages</a></td>
+                <td>Thomas Dziedzic</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2014-07-28</td>
+                <td class="wrap"><a href="/news/xorg-server-116-is-now-available/"
+                        title="View: xorg-server 1.16 is now available">xorg-server 1.16 is now available</a></td>
+                <td>Laurent Carlier</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2014-07-12</td>
+                <td class="wrap"><a href="/news/mariadb-100-enters-extra/"
+                        title="View: MariaDB 10.0 enters [extra]">MariaDB 10.0 enters [extra]</a></td>
+                <td>Bartłomiej Piotrowski</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2014-07-10</td>
+                <td class="wrap"><a href="/news/bbs-wiki-and-aur-maintenance/"
+                        title="View: BBS, Wiki, and AUR maintenance">BBS, Wiki, and AUR maintenance</a></td>
+                <td>Florian Pritz</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2014-06-04</td>
+                <td class="wrap"><a href="/news/perl-updated-to-520/"
+                        title="View: Perl updated to 5.20">Perl updated to 5.20</a></td>
+                <td>Florian Pritz</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2014-05-04</td>
+                <td class="wrap"><a href="/news/managing-haskell-packages-with-ghc-782/"
+                        title="View: Managing Haskell packages with GHC 7.8.2">Managing Haskell packages with GHC 7.8.2</a></td>
+                <td>Thomas Dziedzic</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2014-04-29</td>
+                <td class="wrap"><a href="/news/screen-421-cannot-reattach-older-instances-either/"
+                        title="View: screen-4.2.1 cannot reattach older instances either">screen-4.2.1 cannot reattach older instances either</a></td>
+                <td>Gaetan Bisson</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2014-04-20</td>
+                <td class="wrap"><a href="/news/screen-420-cannot-reattach-older-instances/"
+                        title="View: screen-4.2.0 cannot reattach older instances">screen-4.2.0 cannot reattach older instances</a></td>
+                <td>Gaetan Bisson</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2014-02-21</td>
+                <td class="wrap"><a href="/news/linux-313-warning-ps2-keyboard-support-is-now-modular/"
+                        title="View: Linux 3.13 WARNING: PS/2 keyboard support is now modular">Linux 3.13 WARNING: PS/2 keyboard support is now modular</a></td>
+                <td>Thomas Bächler</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2014-02-17</td>
+                <td class="wrap"><a href="/news/bbs-wiki-and-aur-maintenance-period/"
+                        title="View: BBS, Wiki, and AUR maintenance">BBS, Wiki, and AUR maintenance</a></td>
+                <td>Dan McGee</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2013-09-17</td>
+                <td class="wrap"><a href="/news/deprecation-of-etcsysctlconf/"
+                        title="View: Deprecation of /etc/sysctl.conf">Deprecation of /etc/sysctl.conf</a></td>
+                <td>Gaetan Bisson</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2013-08-17</td>
+                <td class="wrap"><a href="/news/php-55-available-in-the-extra-repository/"
+                        title="View: PHP 5.5 available in the [extra] repository">PHP 5.5 available in the [extra] repository</a></td>
+                <td>Pierre Schmitz</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2013-07-15</td>
+                <td class="wrap"><a href="/news/texlive-2013-update-may-require-user-intervention/"
+                        title="View: TeXLive 2013 update may require user intervention">TeXLive 2013 update may require user intervention</a></td>
+                <td>Rémy Oudompheng</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2013-06-03</td>
+                <td class="wrap"><a href="/news/binaries-move-to-usrbin-requiring-update-intervention/"
+                        title="View: Binaries move to /usr/bin requiring update intervention">Binaries move to /usr/bin requiring update intervention</a></td>
+                <td>Allan McRae</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2013-04-10</td>
+                <td class="wrap"><a href="/news/netctl-is-now-in-core/"
+                        title="View: netctl is now in [core]">netctl is now in [core]</a></td>
+                <td>Florian Pritz</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2013-03-25</td>
+                <td class="wrap"><a href="/news/mariadb-replaces-mysql-in-repositories/"
+                        title="View: MariaDB replaces MySQL in repositories">MariaDB replaces MySQL in repositories</a></td>
+                <td>Bartłomiej Piotrowski</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2013-03-01</td>
+                <td class="wrap"><a href="/news/qt4-replaces-qt/"
+                        title="View: qt4 replaces qt">qt4 replaces qt</a></td>
+                <td>Andrea Scarpino</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2013-02-12</td>
+                <td class="wrap"><a href="/news/changes-to-lvm/"
+                        title="View: Changes to LVM">Changes to LVM</a></td>
+                <td>Thomas Bächler</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2013-02-04</td>
+                <td class="wrap"><a href="/news/final-sysvinit-deprecation-warning/"
+                        title="View: Final sysvinit deprecation warning">Final sysvinit deprecation warning</a></td>
+                <td>Tom Gundersen</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2013-01-26</td>
+                <td class="wrap"><a href="/news/update-filesystem-201301-1-and-glibc-217-2-together/"
+                        title="View: Update filesystem-2013.01-1 and glibc-2.17-2 together">Update filesystem-2013.01-1 and glibc-2.17-2 together</a></td>
+                <td>Allan McRae</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2012-12-01</td>
+                <td class="wrap"><a href="/news/december-time-for-a-new-install-medium/"
+                        title="View: December: time for a new install medium">December: time for a new install medium</a></td>
+                <td>Pierre Schmitz</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2012-11-04</td>
+                <td class="wrap"><a href="/news/end-of-initscripts-support/"
+                        title="View: End of initscripts support">End of initscripts support</a></td>
+                <td>Tom Gundersen</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2012-11-02</td>
+                <td class="wrap"><a href="/news/november-release-of-install-media-available/"
+                        title="View: November release of install media available">November release of install media available</a></td>
+                <td>Pierre Schmitz</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2012-11-01</td>
+                <td class="wrap"><a href="/news/bug-squashing-day-saturday-17th-november/"
+                        title="View: Bug Squashing Day: Saturday 17th November">Bug Squashing Day: Saturday 17th November</a></td>
+                <td>Allan McRae</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2012-10-30</td>
+                <td class="wrap"><a href="/news/consolekit-replaced-by-logind/"
+                        title="View: ConsoleKit replaced by logind">ConsoleKit replaced by logind</a></td>
+                <td>Allan McRae</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2012-10-13</td>
+                <td class="wrap"><a href="/news/systemd-is-now-the-default-on-new-installations/"
+                        title="View: systemd is now the default on new installations">systemd is now the default on new installations</a></td>
+                <td>Thomas Bächler</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2012-10-07</td>
+                <td class="wrap"><a href="/news/install-medium-20121006-introduces-systemd/"
+                        title="View: Install medium 2012.10.06 introduces systemd">Install medium 2012.10.06 introduces systemd</a></td>
+                <td>Pierre Schmitz</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2012-09-08</td>
+                <td class="wrap"><a href="/news/new-install-medium-20120907/"
+                        title="View: New install medium 2012.09.07">New install medium 2012.09.07</a></td>
+                <td>Pierre Schmitz</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2012-09-06</td>
+                <td class="wrap"><a href="/news/fontconfig-2101-update-manual-intervention-required/"
+                        title="View: Fontconfig 2.10.1 update - manual intervention required">Fontconfig 2.10.1 update - manual intervention required</a></td>
+                <td>Andreas Radke</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2012-08-11</td>
+                <td class="wrap"><a href="/news/netcfg-289-drops-initscripts-compatibility/"
+                        title="View: netcfg-2.8.9 drops deprecated rc.conf compatibility">netcfg-2.8.9 drops deprecated rc.conf compatibility</a></td>
+                <td>Florian Pritz</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2012-08-04</td>
+                <td class="wrap"><a href="/news/install-media-20120804-available/"
+                        title="View: Install media 2012.08.04 available">Install media 2012.08.04 available</a></td>
+                <td>Pierre Schmitz</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2012-07-30</td>
+                <td class="wrap"><a href="/news/pkgstats-now-collects-modules-usage/"
+                        title="View: pkgstats now collects modules usage">pkgstats now collects modules usage</a></td>
+                <td>Tom Gundersen</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2012-07-30</td>
+                <td class="wrap"><a href="/news/changes-to-rcconf-and-crypttab/"
+                        title="View: Changes to rc.conf and crypttab">Changes to rc.conf and crypttab</a></td>
+                <td>Tom Gundersen</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2012-07-22</td>
+                <td class="wrap"><a href="/news/install-media-20120715-released/"
+                        title="View: Install media 2012.07.15 released">Install media 2012.07.15 released</a></td>
+                <td>Pierre Schmitz</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2012-07-20</td>
+                <td class="wrap"><a href="/news/grub-legacy-no-longer-supported/"
+                        title="View: GRUB legacy no longer supported">GRUB legacy no longer supported</a></td>
+                <td>Ronald van Haren</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2012-07-14</td>
+                <td class="wrap"><a href="/news/the-lib-directory-becomes-a-symlink/"
+                        title="View: The /lib directory becomes a symlink">The /lib directory becomes a symlink</a></td>
+                <td>Allan McRae</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2012-06-07</td>
+                <td class="wrap"><a href="/news/filesystem-upgrade-manual-intervention-required-1/"
+                        title="View: filesystem upgrade - manual intervention required">filesystem upgrade - manual intervention required</a></td>
+                <td>Tom Gundersen</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2012-06-04</td>
+                <td class="wrap"><a href="/news/having-pacman-verify-packages/"
+                        title="View: Having pacman verify packages">Having pacman verify packages</a></td>
+                <td>Gaetan Bisson</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2012-06-01</td>
+                <td class="wrap"><a href="/news/systemd-tools-replaces-udev/"
+                        title="View: systemd-tools replaces udev">systemd-tools replaces udev</a></td>
+                <td>Dave Reisner</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2012-05-13</td>
+                <td class="wrap"><a href="/news/netcfg-282-release/"
+                        title="View: netcfg 2.8.2 release">netcfg 2.8.2 release</a></td>
+                <td>Thomas Bächler</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2012-05-09</td>
+                <td class="wrap"><a href="/news/php-updated-to-version-54/"
+                        title="View: PHP updated to version 5.4">PHP updated to version 5.4</a></td>
+                <td>Pierre Schmitz</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2012-03-12</td>
+                <td class="wrap"><a href="/news/arch-linux-turns-10/"
+                        title="View: Arch Linux turns 10">Arch Linux turns 10</a></td>
+                <td>Dan McGee</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2012-02-07</td>
+                <td class="wrap"><a href="/news/minimum-kernel-requirement-2632/"
+                        title="View: Minimum kernel requirement 2.6.32">Minimum kernel requirement 2.6.32</a></td>
+                <td>Allan McRae</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2012-02-05</td>
+                <td class="wrap"><a href="/news/libpnglibtiff-rebuilds-move-from-testing/"
+                        title="View: libpng/libtiff rebuilds move from [testing]">libpng/libtiff rebuilds move from [testing]</a></td>
+                <td>Ionuț Mircea Bîru</td>
+                
+                    
+            </tr>
+            
+            <tr class="odd">
+                <td>2012-01-23</td>
+                <td class="wrap"><a href="/news/arch-linux-fosdem-2012/"
+                        title="View: Arch Linux @ FOSDEM 2012">Arch Linux @ FOSDEM 2012</a></td>
+                <td>Dieter Plaetinck</td>
+                
+                    
+            </tr>
+            
+            <tr class="even">
+                <td>2012-01-21</td>
+                <td class="wrap"><a href="/news/kmod-replaces-module-init-tools/"
+                        title="View: kmod replaces module-init-tools">kmod replaces module-init-tools</a></td>
+                <td>Dave Reisner</td>
+                
+                    
+            </tr>
+            
+        </tbody>
+    </table>
+
+    
+<div class="pagination">
+    <p>583 news items, viewing page 1 of 12.</p>
+    <p class="news-nav">
+    
+    
+    
+    <span>1</span>
+    
+    
+    
+    <a href="?page=2" title="Go to page 2">2</a>
+    
+    
+    
+    <a href="?page=3" title="Go to page 3">3</a>
+    
+    
+    
+    <a href="?page=4" title="Go to page 4">4</a>
+    
+    
+    
+    <a href="?page=5" title="Go to page 5">5</a>
+    
+    
+    
+    <a href="?page=6" title="Go to page 6">6</a>
+    
+    
+    
+    <a href="?page=7" title="Go to page 7">7</a>
+    
+    
+    
+    <a href="?page=8" title="Go to page 8">8</a>
+    
+    
+    
+    <a href="?page=9" title="Go to page 9">9</a>
+    
+    
+    
+    <a href="?page=10" title="Go to page 10">10</a>
+    
+    
+    
+    <a href="?page=11" title="Go to page 11">11</a>
+    
+    
+    
+    <a href="?page=12" title="Go to page 12">12</a>
+    
+    
+    
+    <a class="next" href="?page=2"
+        title="Go to next page">Next &gt;</a>
+    
+    </p>
+</div>
+
+
+
+</div>
+
+        <div id="footer">
+            <p>Copyright &copy; 2002-2014 <a href="mailto:jvinet@zeroflux.org"
+                title="Contact Judd Vinet">Judd Vinet</a> and <a href="mailto:aaron@archlinux.org"
+                title="Contact Aaron Griffin">Aaron Griffin</a>.</p>
+
+            <p>The Arch Linux name and logo are recognized
+            <a href="https://wiki.archlinux.org/index.php/DeveloperWiki:TrademarkPolicy"
+                title="Arch Linux Trademark Policy">trademarks</a>. Some rights reserved.</p>
+
+            <p>The registered trademark Linux® is used pursuant to a sublicense from LMI,
+            the exclusive licensee of Linus Torvalds, owner of the mark on a world-wide basis.</p>
+        </div>
+    </div>
+    
+</body>
+</html>
