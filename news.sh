@@ -53,14 +53,13 @@ then
 
 	cat $tempCache > $staleCache
 	rm $tempCache
-
-	if [ -f "/usr/bin/pacman" ]
-	then
-		sudo pacman -Syu
-	else
-		echo "You don't have pacman on your system. If you are on Arch, you should panic."
-	fi
 else
-	echo "No new news."
+	echo "There is no unread news on $archNews"
 fi
 
+if [ -f "/usr/bin/pacman" ]
+then
+	sudo pacman -Syu
+else
+	echo "You don't have pacman on your system. If you are on Arch, you should panic."
+fi
